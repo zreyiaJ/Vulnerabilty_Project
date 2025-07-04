@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Username</label>
+        @Html.TextBox("userName", null, new { @class = "form-control", placeholder = "Enter your username" })
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        @Html.Password("password", null, new { @class = "form-control", placeholder = "Enter your password" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+}

@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #a08eff34;
+
+        }
+
+        .navbar {
+            background-color: #290057;
+            color: #ffffff;
+            height: 80px;
+        }
+
+        .sidebar {
+            background-color: #360074;
+            color: #ffffff;
+            padding: 10px 10px;
+            height:100vh;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            background-color: #290057;
+            margin: 6px 0;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+            display: block;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+
+            .nav-link:hover {
+                background-color: #4e1a99;
+                text-shadow: 0 0 3px #ffffff, 0 0 2px #4e1a99;
+            }
+
+        .top-link, .navbar-brand {
+            color: #ffffff !important;
+            font-size: 18px;
+            padding: 8px 12px;
+        }
+
+        .top-link:hover, .navbar-brand:hover {
+            text-shadow: 0 0 3px #ffffff, 0 0 3px #4e1a99;
+        }
+
+        main {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+            @Html.ActionLink("Vulnerability Tracker", "Index", "Home", null, new { @class = "navbar-brand", @style = "font-weight: bold; font-size: 24px;" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topNavbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link top-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link top-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar and Main Layout -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-12 col-md-2 sidebar">
+                <ul class="nav flex-column">
+                    <li>@Html.ActionLink("Dashboard", "Index", "Home", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Vulnerabilities", "Index", "Vulnerbilities", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Remediations", "Index", "Remediation", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Users", "Index", "User", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Example Page1", "View1", "ExampleViews", null, new { @class = "nav-link" })</li>
+                    @*<li>@Html.ActionLink("Example Page2", "View2", "ExampleViews", null, new { @class = "nav-link" })</li>*@
+                    <li>@Html.ActionLink("Example Page3", "View3", "ExampleViews", null, new { @class = "nav-link" })</li>
+
+
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <main class="col-12 col-md-9" style="margin-left:30px ">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

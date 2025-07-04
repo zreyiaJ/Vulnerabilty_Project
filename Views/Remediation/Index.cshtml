@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Vulnerabilty_Project.Models.RemediationModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .card {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .card-header {
+        text-align: center;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+        color: #290057;
+        margin-top: 10px;
+    }
+
+    .btn-action a {
+        color: white;
+        margin-right: 5px;
+        text-decoration: none;
+    }
+
+        .btn-action a:hover {
+            text-decoration: underline;
+        }
+
+    #editbtn {
+        background-color: #4d7e49;
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #deletebtn {
+        background-color: #803c3c;
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #detailsbtn {
+        background-color: #66537a;
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #createbtn {
+        background-color: #4d7e49;
+        color: #ffffff;
+        padding: 6px 14px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        display: inline-block;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .table th {
+        background-color: #29005796;
+        color: #ffffff;
+    }
+
+    .action-cell {
+        background-color: #452864;
+        padding: 2px 8px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+        .action-cell a {
+            color: white;
+        }
+
+    .email-text {
+        color: #290057 !important;
+    }
+</style>
+
+<h2 style="color: #c7c7c756; text-align: center;">Index</h2>
+
+<div class="card container-fluid">
+    <div class="card-header">
+        <h2 style="color:#290057">Remediation Details</h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VulnID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EngineerID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActionTaken)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Timestamp)
+                    </th>
+                    <th style="text-align: center;">Available Actions</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VulnID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EngineerID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ActionTaken)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Timestamp)
+                        </td>
+                        <td class="action-cell">
+                            <a href="@Url.Action("Edit", new { id = item.RemediationID })" class="btn" id="editbtn">Edit</a>
+                            <a href="@Url.Action("Delete", new { id = item.RemediationID })" class="btn" id="deletebtn">Delete</a>
+                            <a href="@Url.Action("Details", new { id = item.RemediationID })" class="btn" id="detailsbtn">Details</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <a href="@Url.Action("Create")" class="btn" id="createbtn">Create New</a>
+    </div>
+</div>

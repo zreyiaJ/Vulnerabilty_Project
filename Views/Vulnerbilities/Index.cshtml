@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Vulnerabilty_Project.Models.VulnerbilitiesModel>
+
+@{
+    ViewBag.Title = "Vulnerability List";
+}
+
+<style>
+    .card {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .card-header {
+        text-align: center;
+        background-color: #FFFFFF;
+        border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+        color: #290057;
+        margin-top: 10px;
+    }
+
+    .btn-action a {
+        color: white;
+        margin-right: 5px;
+        text-decoration: none;
+    }
+
+        .btn-action a:hover {
+            text-decoration: underline;
+        }
+
+    #editbtn {
+        background-color: #4d7e49; /* Green */
+
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #deletebtn {
+        background-color: #803c3c; /*red*/
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #detailsbtn {
+        background-color: #66537a; /*purple*/
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+
+    #createbtn {
+        background-color: #4d7e49; /* Green */
+        color: #ffffff;
+        padding: 2px 8px;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        position: center;
+    }
+
+    .table th {
+        background-color: #29005796;
+        color: #ffffff
+    }
+
+    .action-cell {
+        background-color: #452864;
+        padding: 2px 8px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+        .action-cell a {
+            color: white;
+        }
+
+    .email-text {
+        color: #290057 !important;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Vulnerability Records</h2>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.DiscoveredDate)</th>
+                <th>@Html.DisplayNameFor(model => model.AffectedSystem)</th>
+                <th>@Html.DisplayNameFor(model => model.ReporterID)</th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DiscoveredDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AffectedSystem)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ReporterID)</td>
+                    <td class="action-cell">
+                        <a href="@Url.Action("Edit", new { id = item.VulnID })" id="editbtn">Edit</a>
+                        <a href="@Url.Action("Details", new { id = item.VulnID })" id="detailsbtn">Details</a>
+                        <a href="@Url.Action("Delete", new { id = item.VulnID })" id="deletebtn">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div style="margin-left: 10px;">
+        <a href="@Url.Action("Create")" id="createbtn">Create New</a>
+    </div>
+</div>
