@@ -23,6 +23,10 @@ The **Vulnerability Tracker** is designed to help security teams or system admin
 
 ## 📷 Screenshots
 
+<img width="1600" height="753" alt="image" src="https://github.com/user-attachments/assets/becfa7c3-94aa-4f17-bf34-d3c1d448177d" />
+<img width="1600" height="755" alt="image" src="https://github.com/user-attachments/assets/242fec79-e54c-4877-9606-86c96267524b" />
+<img width="1600" height="824" alt="image" src="https://github.com/user-attachments/assets/7e263cec-8f98-4a32-af31-97972e217484" />
+
 
 
 ## ⚙️ Getting Started
